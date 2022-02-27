@@ -1,5 +1,5 @@
-# User Authentication and Authorization
-Custom user Authenticatuin & Authorization
+# MaxSOPEco 
+Simple eco system for MaxSOP.
 
 ## Installation
 
@@ -41,4 +41,11 @@ Make migrations & migrate to database
 ### Step 7:
 Create superadmin
 > python manage.py createsuperuser 
+
+# Step 8:
+Generate dependance list
+> pip freeze > requirements.txt
+
+Install dependance recursively
+> pip install -r .\requirements.txt
 
