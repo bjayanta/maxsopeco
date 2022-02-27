@@ -1,4 +1,4 @@
-# MaxSOPEco 
+# MaxSOP Eco System
 Simple eco system for MaxSOP.
 
 ## Installation

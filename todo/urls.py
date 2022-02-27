@@ -1,7 +1,7 @@
-from unicodedata import name
 from django.urls import path 
-from .import views
+from .views import TaskDetail, TaskList
 
 urlpatterns = [
-    path('', views.taskList, name='todo:tasks'),
+    path('', TaskList.as_view(), name='todo.index'),
+    path('todo/<int:pk>/', TaskDetail.as_view(), name='todo.show'),
 ]
