@@ -5,6 +5,7 @@
     <h3>Task list</h3>
 
     <nav>
+        <a href="#">{{ request.user }}</a>
         <a href="{% url 'todo.create' %}">Add Task</a>
     </nav>
 
@@ -23,7 +24,11 @@
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>{{ task.title }}</td>
-                <td><a href="{% url 'todo.show' task.id %}" target="_blank">Details</a></td>
+                <td>
+                    <a href="{% url 'todo.show' task.id %}" target="_blank">Details</a>
+                    <a href="{% url 'todo.edit' task.id %}" target="_blank">Edit</a>
+                    <a href="{% url 'todo.delete' task.id %}" target="_blank">Delete</a>
+                </td>
             </tr>
             {% empty %}
             <tr>

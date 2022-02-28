@@ -8,6 +8,14 @@
 </head>
 <body>
     
+    <nav>
+        {% if request.user.is_authenticated %}
+            <span>{{ request.user }}</span>
+            <a href="">Logout</a>
+        {% else %}
+            <a href="">Login</a>
+        {% endif %}
+    </nav>
 
     {% block content %}{% endblock content %}
 
