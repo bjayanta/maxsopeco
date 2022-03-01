@@ -11,11 +11,14 @@
     <nav>
         {% if request.user.is_authenticated %}
             <span>{{ request.user }}</span>
-            <a href="">Logout</a>
+            <a href="{% url 'todo.logout' %}">Logout</a>
         {% else %}
-            <a href="">Login</a>
+            <a href="{% url 'todo.login' %}">Login</a>
         {% endif %}
     </nav>
+
+    {{ site }}
+    {{ site_name }}
 
     {% block content %}{% endblock content %}
 
