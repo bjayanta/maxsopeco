@@ -7,5 +7,10 @@
             {{ form.as_p }}
             <input type="submit" value="Login">
         </form>
+
+        <p>
+            Don't have an account? 
+            <a href="{% url 'todo.register' %}">Register</a>
+        </p>
     </div>
 {% endblock content %}

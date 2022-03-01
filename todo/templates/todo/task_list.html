@@ -2,12 +2,12 @@
 
 {% block content %}
 <div>
-    <h3>Task list</h3>
+    <div>
+        <h2>Hello {{ request.user|title }}</h2>
+        <p>You have <strong>{{ count }} incomplete task{{ count|pluralize:"s" }}.</strong></p>
+    </div>
 
-    <nav>
-        <a href="#">{{ request.user }}</a>
-        <a href="{% url 'todo.create' %}">Add Task</a>
-    </nav>
+    <h3>Task list</h3>
 
     <table>
         <thead>
@@ -21,9 +21,16 @@
         <tbody>
             {% comment %} {% for task in object_list %} {% endcomment %}
             {% for task in tasks %}
+                
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td>{{ task.title }}</td>
+                <td>
+                    {% if task.complete %}
+                    <span>{{ task.title }}</span>
+                    {% else %}
+                    <del>{{ task.title }}</del>
+                    {% endif %}
+                </td>
                 <td>
                     <a href="{% url 'todo.show' task.id %}" target="_blank">Details</a>
                     <a href="{% url 'todo.edit' task.id %}" target="_blank">Edit</a>
