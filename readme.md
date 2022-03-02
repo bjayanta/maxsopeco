@@ -1,5 +1,5 @@
 # MaxSOP Eco System
-Simple eco system for MaxSOP.
+Simple eco system for MaxSOP. To-Do, Daily expense, Note etc is some basic features. 
 
 ## Installation
 
