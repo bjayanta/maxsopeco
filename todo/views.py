@@ -39,7 +39,6 @@ class RegisterPage(FormView):
             return redirect('todo.index')
         
         return super(RegisterPage, self).get(*args, **kwargs)
-
     
 class TaskList(LoginRequiredMixin, ListView):
     model = Task
@@ -49,6 +48,19 @@ class TaskList(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context["tasks"] = context['tasks'].filter(user=self.request.user)
         context["count"] = context['tasks'].filter(complete=False).count()
+
+        # search action
+        searchInput = self.request.GET.get('searchArea') or ''
+        context["contextQuery"] = searchInput
+
+        if searchInput:
+            context["filterInput"] = self.request.GET.get('queryType') or ''
+
+            if context["filterInput"] == 'icontains':
+                context["tasks"] = context['tasks'].filter(title__icontains=searchInput)
+
+            if context["filterInput"] == 'startswith':
+                context["tasks"] = context['tasks'].filter(title__startswith=searchInput)
 
         return context
 

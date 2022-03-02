@@ -9,6 +9,18 @@
 
     <h3>Task list</h3>
 
+    {# search task #}
+    <form action="" method="get">
+        <input type="text" name="searchArea" value="{{ contextQuery }}" placeholder="Type here">
+        <select name="queryType">
+            <option value="icontains" {% if filterInput == 'icontains' %} selected {% endif %}>Match Anywhere</option>
+            <option value="startswith" {% if filterInput == 'startswith' %} selected {% endif %}>Starts With</option>
+        </select>
+
+        <button type="submit">Search</button>
+        <a href="{% url 'todo.index' %}">Refresh</a>
+    </form>
+
     <table>
         <thead>
             <tr>
@@ -19,16 +31,14 @@
         </thead>
 
         <tbody>
-            {% comment %} {% for task in object_list %} {% endcomment %}
             {% for task in tasks %}
-                
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>
                     {% if task.complete %}
-                    <span>{{ task.title }}</span>
-                    {% else %}
                     <del>{{ task.title }}</del>
+                    {% else %}
+                    <span>{{ task.title }}</span>
                     {% endif %}
                 </td>
                 <td>

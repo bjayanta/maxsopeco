@@ -1,0 +1,10 @@
+<nav>
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'todo.index' %}">{{ request.user|title }}</a>
+        <a href="{% url 'todo.index' %}">List</a>
+        <a href="{% url 'todo.create' %}">Create</a>
+        <a href="{% url 'todo.logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'todo.login' %}">Login</a>
+    {% endif %}
+</nav>
